@@ -22,14 +22,16 @@ def get_spider():
         upload.oss(data + "/" + name, "./spider_pic/" + name)
 
     return str(result)
-@app.route('/upload_spider')
-def upload_spider():
-    pic_list = request.args.get()
+# @app.route('/upload_spider')
+# def upload_spider():
+#     pic_list = request.args.get()
 
 
 # 分类
 @app.route('/divider')
 def do_divider():
+    pic = request.args.get('pic')
+
     return ''
 
 
