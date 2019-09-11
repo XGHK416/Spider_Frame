@@ -35,6 +35,7 @@ def parse_data(html):
     return data.get('data')
     # 以下自行解析
 
+
 #  html 必应
 def parse_data_Bing(html, param):
     soup = BeautifulSoup(html)
@@ -58,11 +59,11 @@ def parse_data_Bing(html, param):
     # # 以下自行解析
 
 
-#Google
-def parse_data_Google(html,param):
+# Google
+def parse_data_Google(html, param):
     # pattern = re.compile('<a.*?href="(.*?)".*?title="(.*?)".*?>.*?<img.*?alt=".*?".*?src="(.*?dr/).*?(__.*?)".*?>',
     pattern = re.compile(
-        'src="(.*?)"',re.S)
+        'src="(.*?)"', re.S)
     url_list = pattern.findall(html)
     result = []
     for i in url_list:
@@ -74,14 +75,19 @@ def spider(target):
     which_to_spide = target
     # 网站链接
     web_list = {
-        "1": ["Bing","https://cn.bing.com/images/async?q=交通标志&first=0&count=35&relp=35&qft=+filterui%3aphoto-photo+filterui%3aaspect-square&scenario=ImageBasicHover&datsrc=N_I&layout=RowBased&mmasync=1&dgState=x*0_y*0_h*0_c*5_i*36_r*7&IG=877F128F446144A4AB040EDEDDBF0EEC&SFX=2&iid=images.5632"],
-        "2": ["Google","https://www.google.com/search?ei=JIh3XfXQC4fT-QaQz4KADA&tbs=itp:clipart&yv=3&q=%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97&tbm=isch&vet=10ahUKEwj18ujIksbkAhWHad4KHZCnAMAQuT0IQCgB.JIh3XfXQC4fT-QaQz4KADA.i&ved=0ahUKEwj18ujIksbkAhWHad4KHZCnAMAQuT0IQCgB&ijn=0&start=0&asearch=ichunk&async=_id:rg_s,_pms:s,_jsfs:Ffpdje,_fmt:pc"]
+        "1": ["Bing",
+              "https://cn.bing.com/images/async?q=交通标志&first=0&count=35&relp=35&qft=+filterui%3aphoto-photo+filterui%3aaspect-square&scenario=ImageBasicHover&datsrc=N_I&layout=RowBased&mmasync=1&dgState=x*0_y*0_h*0_c*5_i*36_r*7&IG=877F128F446144A4AB040EDEDDBF0EEC&SFX=2&iid=images.5632"],
+        "2": ["Google",
+              "https://www.google.com/search?ei=JIh3XfXQC4fT-QaQz4KADA&tbs=itp:clipart&yv=3&q=%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97&tbm=isch&vet=10ahUKEwj18ujIksbkAhWHad4KHZCnAMAQuT0IQCgB.JIh3XfXQC4fT-QaQz4KADA.i&ved=0ahUKEwj18ujIksbkAhWHad4KHZCnAMAQuT0IQCgB&ijn=0&start=0&asearch=ichunk&async=_id:rg_s,_pms:s,_jsfs:Ffpdje,_fmt:pc"]
     }
     parse = "parse_data_"
     url_dict = web_list.get(which_to_spide)
     html = open_url(url_dict[1])
-    parse_function = parse+url_dict[0]+"(html,None)"
-    result = {"result":eval(parse_function)}
+    parse_function = parse + url_dict[0] + "(html,None)"
+    pic_list = eval(parse_function)
+    count = len(pic_list)
+    result = {"pic_list": eval(parse_function), "count": count}
+
     return result
 
 

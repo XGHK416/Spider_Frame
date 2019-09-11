@@ -1,6 +1,7 @@
 import oss2, uuid
 import os
 import pymysql
+import datetime
 
 
 #
@@ -10,7 +11,7 @@ def oss(img_key, img_path):
     bucket = oss2.Bucket(auth, endpoint, 'xghk416')
     a = bucket.put_object_from_file(img_key, img_path)
     url = 'https://xghk416.oss-cn-beijing.aliyuncs.com/' + img_key
-    print(url)
+    # print(url)
     url_insert(url)
 
 
@@ -20,11 +21,11 @@ def url_insert(url):
     cursor = db.cursor()
     uid = str(uuid.uuid4())
     suid = ''.join(uid.split('-'))
-    print(suid)
-    sql = 'INSERT INTO `traffic_sign`(id,pic_url)VALUES(%s,%s)'
-    print(sql)
+    # print(suid)
+    sql = 'INSERT INTO `traffic_sign`(id,pic_url,create_time)VALUES(%s,%s,%s)'
+    # print(sql)
     try:
-        cursor.execute(sql, (str(suid), url))
+        cursor.execute(sql, (str(suid), url,datetime.datetime.now()))
         db.commit()
     except Exception as exc:
         print(exc)

@@ -13,7 +13,7 @@ def get_spider():
     target = request.args.get('target')
     data = request.args.get('today')
     result = sp.spider(target)
-    pic_list = result['result']
+    pic_list = result['pic_list']
     for index, pic in enumerate(pic_list):
         name = data + "_" + str(index) + ".png"
         # 下载图片
@@ -22,6 +22,9 @@ def get_spider():
         upload.oss(data + "/" + name, "./spider_pic/" + name)
 
     return str(result)
+@app.route('/upload_spider')
+def upload_spider():
+    pic_list = request.args.get()
 
 
 # 分类
