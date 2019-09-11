@@ -78,12 +78,10 @@ def spider(target):
         "2": ["Google","https://www.google.com/search?ei=JIh3XfXQC4fT-QaQz4KADA&tbs=itp:clipart&yv=3&q=%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97&tbm=isch&vet=10ahUKEwj18ujIksbkAhWHad4KHZCnAMAQuT0IQCgB.JIh3XfXQC4fT-QaQz4KADA.i&ved=0ahUKEwj18ujIksbkAhWHad4KHZCnAMAQuT0IQCgB&ijn=0&start=0&asearch=ichunk&async=_id:rg_s,_pms:s,_jsfs:Ffpdje,_fmt:pc"]
     }
     parse = "parse_data_"
-    print("1113"+which_to_spide)
     url_dict = web_list.get(which_to_spide)
     html = open_url(url_dict[1])
     parse_function = parse+url_dict[0]+"(html,None)"
     result = {"result":eval(parse_function)}
-    print(type(result))
     return result
 
 
