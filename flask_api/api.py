@@ -2,6 +2,7 @@ from flask import Flask, request
 import spider.Spider as sp
 import algorithm.upload as upload
 import algorithm.download as download
+import algorithm.predict as predict
 
 app = Flask(__name__)
 
@@ -22,6 +23,8 @@ def get_spider():
         upload.oss(data + "/" + name, "./spider_pic/" + name)
 
     return str(result)
+
+
 # @app.route('/upload_spider')
 # def upload_spider():
 #     pic_list = request.args.get()
@@ -30,9 +33,16 @@ def get_spider():
 # 分类
 @app.route('/divider')
 def do_divider():
-    pic = request.args.get('pic')
+    pic_url = "https://xghk416.oss-cn-beijing.aliyuncs.com/predict/"+request.args.get('pic_name')+'.jpg'
+    print(pic_url)
+    download.download_img(pic_url, 'predict.png', 'predict')
+    print("上传完成")
+    base_url = './predict_pic/predict.png'
+    print("开始预测")
+    result = predict.get_predict(base_url)
+    print(result)
 
-    return ''
+    return str(result)
 
 
 # 算法
