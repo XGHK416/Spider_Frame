@@ -86,7 +86,7 @@ def spider(target):
     parse_function = parse + url_dict[0] + "(html,None)"
     pic_list = eval(parse_function)
     count = len(pic_list)
-    result = {"pic_list": eval(parse_function), "count": count}
+    result = {"message": "成功获取" + str(count) + "条图片\n以保存到云端", "success": "true", "data": pic_list}
 
     return result
 

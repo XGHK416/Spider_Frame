@@ -6,6 +6,7 @@ import imutils
 from PIL import Image, ImageDraw, ImageFont
 from keras.models import load_model
 from keras.preprocessing.image import img_to_array
+import keras
 
 NORM_SIZE = 32
 
@@ -34,6 +35,7 @@ def args_parse1(url):
 
 
 def predict(args):
+    keras.backend.clear_session()
     print("loading model...")
     model = load_model(args['model'])
 
@@ -80,7 +82,6 @@ def change_cv2_draw(image, strs, local, sizes, colour):
 def get_predict(url):
     args = args_parse1(url)
     result = predict(args)
-    print(result)
     return result
 
 
