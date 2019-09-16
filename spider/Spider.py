@@ -76,7 +76,7 @@ def spider(target):
     # 网站链接
     web_list = {
         "1": ["Bing",
-              "https://cn.bing.com/images/async?q=交通标志&first=0&count=35&relp=35&qft=+filterui%3aphoto-photo+filterui%3aaspect-square&scenario=ImageBasicHover&datsrc=N_I&layout=RowBased&mmasync=1&dgState=x*0_y*0_h*0_c*5_i*36_r*7&IG=877F128F446144A4AB040EDEDDBF0EEC&SFX=2&iid=images.5632"],
+              "https://cn.bing.com/images/async?q=交通标志&first=0&count=70&relp=70&qft=+filterui%3aphoto-photo+filterui%3aaspect-square&scenario=ImageBasicHover&datsrc=N_I&layout=RowBased&mmasync=1&dgState=x*0_y*0_h*0_c*5_i*36_r*7&IG=877F128F446144A4AB040EDEDDBF0EEC&SFX=2&iid=images.5632"],
         "2": ["Google",
               "https://www.google.com/search?ei=JIh3XfXQC4fT-QaQz4KADA&tbs=itp:clipart&yv=3&q=%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97&tbm=isch&vet=10ahUKEwj18ujIksbkAhWHad4KHZCnAMAQuT0IQCgB.JIh3XfXQC4fT-QaQz4KADA.i&ved=0ahUKEwj18ujIksbkAhWHad4KHZCnAMAQuT0IQCgB&ijn=0&start=0&asearch=ichunk&async=_id:rg_s,_pms:s,_jsfs:Ffpdje,_fmt:pc"]
     }

@@ -5,6 +5,7 @@ import spider.Spider as sp
 import algorithm.upload as upload
 import algorithm.download as download
 import algorithm.predict as predict
+import json
 
 app = Flask(__name__)
 
@@ -58,6 +59,12 @@ def do_divider():
 def divide_train_test():
     os.system('python ../algorithm/divide_train_test.py')
     return 'success'
+# 获取准确率参数
+@app.route('/get_acc')
+def get_acc():
+    with open('./model_acc/test.json', 'r') as f:
+        data = json.load(f)
+        return str(data)
 
 # 算法
 @app.route('/algorithm')
